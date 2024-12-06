@@ -1,0 +1,24 @@
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/eyes/docker/homarr/configs:/app/data/configs
+      - /home/eyes/docker/homarr/data:/data
+      - /home/eyes/docker/homarr/icons:/app/public/icons
+      - /home/eyes/docker/homarr/backgrounds:/app/public/backgrounds
+    environment:
+      - DEFAULT_COLOR_SCHEME=dark
+      - TZ=Asia/Kolkata
+      - DISABLE_ANALYTICS=true
+    ports:
+      - "7575:7575"
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net

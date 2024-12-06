@@ -1,0 +1,16 @@
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    volumes:
+      - /home/eyes/docker/memos:/var/opt/memos
+    ports:
+      - 5230:5230
+    restart: unless-stopped
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net

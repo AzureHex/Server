@@ -1,0 +1,16 @@
+services:
+  server:
+    image: "vaultwarden/server:latest"
+    container_name: vaultwarden
+    ports:
+      - "8666:80"
+    restart: unless-stopped
+    volumes:
+      - /home/eyes/docker/vaultwarden/data/:/data/
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net
