@@ -1,0 +1,22 @@
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    ports:
+      - "53:53/tcp" # DNS TCP
+      - "53:53/udp" # DNS UDP
+      - "80:80/tcp" # HTTP for web UI
+      - "443:443/tcp" # HTTPS for web UI
+      - "3000:3000/tcp" # Admin UI
+    volumes:
+      - /home/eyes/docker/adguardhome/data:/opt/adguardhome/work
+      - /home/eyes/docker/adguardhome/conf:/opt/adguardhome/conf
+    restart: unless-stopped
+    networks:
+      macvlan:
+        ipv4_address: 192.168.29.102
+
+networks:
+  macvlan:
+    external: true
+    name: macvlan
