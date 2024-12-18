@@ -1,0 +1,14 @@
+services:
+  web-check:
+    container_name: Web-Check
+    image: lissy93/web-check:latest
+    ports:
+      - 8034:3000
+    restart: unless-stopped
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net

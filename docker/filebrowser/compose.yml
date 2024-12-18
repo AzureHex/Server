@@ -1,0 +1,21 @@
+services:
+  file-browser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    user: 1000:1000
+    privileged: true
+    environment:
+      - TZ=Asia/Kolkata
+    ports:
+      - 8081:80
+    volumes:
+      - /home/eyes/media/bin:/srv
+      - /home/eyes/docker/filebrowser/filebrowser.db:/database.db  #touch filebrowser.db
+    restart: unless-stopped
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net
