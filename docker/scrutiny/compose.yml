@@ -1,0 +1,33 @@
+services:
+  scrutiny:
+    stdin_open: true
+    tty: true
+    ports:
+      - 8088:8080
+      - 8090:8086
+    volumes:
+      - /home/eyes/docker/scrutiny/config:/data/config
+      - /home/eyes/docker/scrutiny/influxdb:/opt/scrutiny/influxdb
+      - /run/udev:/run/udev:ro
+
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+    devices:
+      #      - /dev/nvme0
+      - /dev/sda
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+    container_name: scrutiny
+    image: ghcr.io/analogj/scrutiny:master-omnibus
+    restart: unless-stopped
+    privileged: true
+    networks:
+      - net
+
+networks:
+  net:
+    external: true
+    name: net
