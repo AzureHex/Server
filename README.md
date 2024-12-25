@@ -1,5 +1,5 @@
-## Installed Apps
+# Installed Apps
 
 ```sh
-sudo apt install glances
+sudo apt install glances powertop
 ```
