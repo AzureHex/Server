@@ -9,7 +9,7 @@ services:
     ports:
       - 8081:80
     volumes:
-      - /home/eyes/media/bin:/srv
+      - /home/eyes/media:/srv
       - /home/eyes/docker/filebrowser/filebrowser.db:/database.db  #touch filebrowser.db
     restart: unless-stopped
     networks:
