@@ -1,10 +1,10 @@
 # Installed Apps
 
 ```sh
-sudo apt install glances powertop
+sudo apt install glances powertop tailscale tailscale-archive-keyring tree
 ```
 
-Set up Docker's `apt` repository.
+1. Set up Docker's `apt` repository.
 
 ```bash
 # Add Docker's official GPG key:
@@ -26,8 +26,8 @@ sudo apt-get update
 
 To install the latest version, run:
 
-```console
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```sh
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 
@@ -37,14 +37,14 @@ To create the `docker` group and add your user:
 
 1. Create the `docker` group.
     
-    ```console
-    $ sudo groupadd docker
+    ```sh
+    sudo groupadd docker
     ```
     
 2. Add your user to the `docker` group.
     
-    ```console
-    $ sudo usermod -aG docker $USER
+    ```sh
+    sudo usermod -aG docker $USER
     ```
     
 3. Log out and log back in so that your group membership is re-evaluated.
@@ -54,13 +54,13 @@ To create the `docker` group and add your user:
     You can also run the following command to activate the changes to groups:
     
     ```console
-    $ newgrp docker
+    newgrp docker
     ```
     
 4. Verify that you can run `docker` commands without `sudo`.
     
     ```console
-    $ docker run hello-world
+    docker run hello-world
     ```
     
     This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.
@@ -76,9 +76,9 @@ To create the `docker` group and add your user:
     
     To fix this problem, either remove the `~/.docker/` directory (it's recreated automatically, but any custom settings are lost), or change its ownership and permissions using the following commands:
     
-    ```console
-    $ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-    $ sudo chmod g+rwx "$HOME/.docker" -R
+    ```sh
+    sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+    sudo chmod g+rwx "$HOME/.docker" -R
     ```
     
 
@@ -86,16 +86,16 @@ To create the `docker` group and add your user:
 
 Many modern Linux distributions use [systemd](https://systemd.io/) to manage which services start when the system boots. On Debian and Ubuntu, the Docker service starts on boot by default. To automatically start Docker and containerd on boot for other Linux distributions using systemd, run the following commands:
 
-```console
-$ sudo systemctl enable docker.service
-$ sudo systemctl enable containerd.service
+```sh
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 ```
 
 To stop this behavior, use `disable` instead.
 
-```console
-$ sudo systemctl disable docker.service
-$ sudo systemctl disable containerd.service
+```sh
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
 ```
 
 ---
@@ -104,22 +104,22 @@ $ sudo systemctl disable containerd.service
 
 1. Uninstall the Docker Engine, CLI, containerd, and Docker Compose packages:
     
-    ```console
-    $ sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+    ```sh
+    sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
     ```
     
 2. Images, containers, volumes, or custom configuration files on your host aren't automatically removed. To delete all images, containers, and volumes:
     
-    ```console
-    $ sudo rm -rf /var/lib/docker
-    $ sudo rm -rf /var/lib/containerd
+    ```sh
+    sudo rm -rf /var/lib/docker
+    sudo rm -rf /var/lib/containerd
     ```
     
 3. Remove source list and keyrings
     
-    ```console
-    $ sudo rm /etc/apt/sources.list.d/docker.list
-    $ sudo rm /etc/apt/keyrings/docker.asc
+    ```sh
+    sudo rm /etc/apt/sources.list.d/docker.list
+    sudo rm /etc/apt/keyrings/docker.asc
     ```
     
 
