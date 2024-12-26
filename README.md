@@ -1,4 +1,4 @@
-# Installed Apps
+## Installed Apps
 
 ```sh
 sudo apt install glances powertop tailscale tailscale-archive-keyring tree
@@ -31,7 +31,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```
 
 
-# Linux post-installation steps for Docker Engine
+## Linux post-installation steps for Docker Engine
 
 To create the `docker` group and add your user:
 
