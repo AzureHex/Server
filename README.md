@@ -1,4 +1,4 @@
-## Installed Apps
+ß## Installed Apps
 
 ```sh
 sudo apt install glances powertop tailscale tailscale-archive-keyring tree
